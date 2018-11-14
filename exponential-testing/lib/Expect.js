@@ -1,23 +1,28 @@
-function Expect(value) {
-  this.value = value;
-}
+(function(exports) {
+  function expect(value) {
 
-Expect.prototype.toEqual = function(assertion) {
-  console.log(this.value === assertion)
-}
+    function toEqual(assertion) {
+      value === assertion ? console.log('✅') : console.log('❌')
+    }
 
-Expect.prototype.compare_array = function(array) {
-  if (this.value.length != array.length) {
-    return console.log(false)
-  }
+    function compareArray(array) {
+      if (value.length != array.length) {
+        console.log(false)
+      }
+      for (var i = 0; i < value.length; ++i) {
+        if (value[i] != array[i]) {
+          console.log(false)
+        }
+      }
+      console.log('✅')
+    }
 
-  for (var i = 0; i < this.value.length; ++i) {
-    if (this.value[i] != array[i]) {
-      return console.log(false)
+    return {
+      toEqual: toEqual,
+      compareArray: compareArray
     }
   }
 
-return console.log(true)
-}
+  exports.expect = expect
 
-module.exports = Expect
+})(this)
