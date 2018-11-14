@@ -19,6 +19,9 @@ var notes = new Notes();
 notes.add("Hello");
 new Expect(notes.notes[0]).toEqual('Hello');
 
+console.log("Expects 'Notes.find' to find a specific note from the array");
+notes.add("World");
+new Expect(notes.find(0)).toEqual("Hello");
 
 console.log("should update a specific note");
 var notes = new Notes();
