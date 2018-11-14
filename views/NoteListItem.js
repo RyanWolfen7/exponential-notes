@@ -1,9 +1,10 @@
 (function (exports) {
   function NoteListItem() {
-    function render(title) {
+    function render(note) {
       return `
         <div>
-          <h3>${title}</h3>
+          <h3>${note.title}</h3>
+          <button onclick="handleNoteDetailPage(${note.index})">Read</button>
         </div>
       `
     }
