@@ -17,9 +17,14 @@
       console.log('✅')
     }
 
+    function toHaveContent(assertion) {
+      value.includes(assertion) ? console.log('✅') : console.log('❌')
+    }
+
     return {
       toEqual: toEqual,
-      compareArray: compareArray
+      compareArray: compareArray,
+      toHaveContent: toHaveContent
     }
   }
 
