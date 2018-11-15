@@ -1,5 +1,9 @@
-let notePad;
 let noteListItem;
+let indexPage;
+let notePad;
+let noteOne;
+let noteTwo;
+let noteThree;
 
 console.log('should show a list of the notes')
 notePad = new NotePad()
@@ -33,7 +37,7 @@ notePad.notes = [1,2,3]
 notePad.deleteNote(2)
 expect(notePad.notes.length).toEqual(2)
 
-console.log('------VIEW COMPONENTS------')
+console.log('\n\n------VIEW COMPONENTS------')
 console.log("should render the NoteListItem correctly")
 noteListItem = new NoteListItem()
 let html = noteListItem.render({index: 1, title: 'Test title'})
@@ -41,3 +45,18 @@ console.log('should have title')
 expect(html).toHaveContent('<h3>Test title</h3>')
 console.log('should have read button')
 expect(html).toHaveContent('<button onclick="handleNoteDetailPage(1)">Read</button>')
+
+console.log('\n\n#C IndexPage')
+console.log('should render index view correctly')
+indexPage = new IndexPage()
+notePad = new NotePad()
+notePad.add(new Note('Note one', 'Body one'))
+notePad.add(new Note('Note two', 'Body two'))
+notePad.add(new Note('Note three', 'Body three'))
+html = indexPage.render(notePad.listNotes())
+console.log('shoudl have note one')
+expect(html).toHaveContent('<h3>Note one</h3>')
+console.log('shoudl have note two')
+expect(html).toHaveContent('<h3>Note two</h3>')
+console.log('shoudl have note three')
+expect(html).toHaveContent('<h3>Note three</h3>')
