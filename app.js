@@ -1,7 +1,7 @@
 let notePad;
 window.addEventListener("load", function() {
-  notePad = new NotePad;
-  document.getElementById("app").innerHTML = IndexPage().render(notePad.notes);
+  notePad = new NotePad();
+  document.getElementById("app").innerHTML = IndexPage().render(notePad.listNotes());
 }, false)
 
 const handleNoteDetailPage = function(index) {

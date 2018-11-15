@@ -66,8 +66,8 @@ console.log('shoudl have note three')
 expect(html).toHaveContent('<h3>Note three</h3>')
 
 console.log('should render index page component')
-indexPageComponent = new Index()
-html = indexPageComponent.render()
+indexPageComponent = new IndexPage()
+html = indexPageComponent.render(notesData)
 expect(html).toHaveContent('<button id="add" onclick="add()">Add Note</button>')
 
 console.log("should render NoteDetail correctly")
@@ -78,4 +78,3 @@ html = noteDetail.render({index: 1, title: 'Test title'})
  html = noteDetail.render({body: 'Test body'})
 console.log('should have body')
 expect(html).toHaveContent('<p>Test body</p>')
-
