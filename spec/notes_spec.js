@@ -1,4 +1,5 @@
 let notePad;
+let noteListItem;
 
 console.log('should show a list of the notes')
 notePad = new NotePad()
@@ -31,3 +32,12 @@ notePad = new NotePad();
 notePad.notes = [1,2,3]
 notePad.deleteNote(2)
 expect(notePad.notes.length).toEqual(2)
+
+console.log('------VIEW COMPONENTS------')
+console.log("should render the NoteListItem correctly")
+noteListItem = new NoteListItem()
+let html = noteListItem.render({index: 1, title: 'Test title'})
+console.log('should have title')
+expect(html).toHaveContent('<h3>Test title</h3>')
+console.log('should have read button')
+expect(html).toHaveContent('<button onclick="handleNoteDetailPage(1)">Read</button>')
