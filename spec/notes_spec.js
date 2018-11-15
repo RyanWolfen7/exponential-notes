@@ -1,33 +1,43 @@
-const Expect = require("../exponential-testing/lib/Expect")
-const Notes = require("../lib/Notes")
-const notesData = require("./fixtures/notes");
+let notePad;
+let noteListItem;
 
-console.log("Expect to see a list of notes")
-var notes = new Notes();
-notes.notes.push("this")
-notes.notes.push("is")
-notes.notes.push("a")
-notes.notes.push("bunch")
-notes.notes.push("of")
-notes.notes.push("notes")
-var array = [ 'this', 'is', 'a', 'bunch', 'of', 'notes' ];
-new Expect(notes.listNotes()).compare_array(array);
-
+console.log('should show a list of the notes')
+notePad = new NotePad()
+notePad.add("this")
+notePad.add("is")
+notePad.add("a")
+notePad.add("bunch")
+notePad.add("of")
+notePad.add("notes")
+let array = [ 'this', 'is', 'a', 'bunch', 'of', 'notes' ];
+expect(notePad.listNotes()).compareArray(array);
 
 console.log("Expects 'Notes.add' to push a note to the notes array");
-var notes = new Notes();
-notes.add("Hello");
-new Expect(notes.notes[0]).toEqual('Hello');
+notePad = new NotePad();
+notePad.add("Hello");
+expect(notePad.listNotes()[0]).toEqual('Hello');
 
+console.log("Expects 'Notes.find' to find a specific note from the array");
+notePad.add("World");
+expect(notePad.find(0)).toEqual("Hello");
 
 console.log("should update a specific note");
-var notes = new Notes();
-notes.notes = notesData
-notes.update(1, 'updated title', 'changed body')
-new Expect(notes.notes[1].title).toEqual('updated title')
+notePad = new NotePad();
+notesData.forEach((note) => notePad.add(note))
+notePad.update(1, 'updated title', 'changed body')
+expect(notePad.find(1).title).toEqual('updated title')
 
 console.log("should delete note from notes");
-notes = new Notes();
-notes.notes = [1,2,3]
-notes.delete(2)
-new Expect(notes.notes.length).toEqual(2)
+notePad = new NotePad();
+notePad.notes = [1,2,3]
+notePad.deleteNote(2)
+expect(notePad.notes.length).toEqual(2)
+
+console.log('------VIEW COMPONENTS------')
+console.log("should render the NoteListItem correctly")
+noteListItem = new NoteListItem()
+let html = noteListItem.render({index: 1, title: 'Test title'})
+console.log('should have title')
+expect(html).toHaveContent('<h3>Test title</h3>')
+console.log('should have read button')
+expect(html).toHaveContent('<button onclick="handleNoteDetailPage(1)">Read</button>')
