@@ -1,5 +1,6 @@
 let notePad;
 let noteListItem;
+let noteDetail;
 
 console.log('should show a list of the notes')
 notePad = new NotePad()
@@ -39,5 +40,21 @@ noteListItem = new NoteListItem()
 let html = noteListItem.render({index: 1, title: 'Test title'})
 console.log('should have title')
 expect(html).toHaveContent('<h3>Test title</h3>')
+
 console.log('should have read button')
 expect(html).toHaveContent('<button onclick="handleNoteDetailPage(1)">Read</button>')
+
+console.log('should render index page component')
+indexPageComponent = new Index()
+html = indexPageComponent.render()
+expect(html).toHaveContent('<button id="add" onclick="add()">Add Note</button>')
+
+console.log("should render NoteDetail correctly")
+noteDetail = new NoteDetail()
+html = noteDetail.render({index: 1, title: 'Test title'})
+ console.log('should have title')
+ expect(html).toHaveContent('<h3>Test title</h3>')
+ html = noteDetail.render({body: 'Test body'})
+console.log('should have body')
+expect(html).toHaveContent('<p>Test body</p>')
+
