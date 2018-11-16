@@ -15,9 +15,11 @@ const handleNoteEditPage = function(index) {
   document.getElementById("app").innerHTML = NotesEditPageView().render(notePad.listNotes()[index], index);
 }
 
-const updateNote = function(index, title, body) {
+const updateNote = function(index) {
+  title = document.getElementById('title').value;
+  body = document.getElementById('body').value;
   notePad.update(index, title, body);
-  document.getElementById("app").innerHTML = DetailPage().render(index);
+  document.getElementById("app").innerHTML = IndexPage().render(notePad.listNotes());
 }
 
 const handleDeleteNote = function(index) {
