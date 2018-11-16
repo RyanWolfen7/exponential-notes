@@ -23,3 +23,7 @@ const handleDeleteNote = function(index) {
   notePad.deleteNote(index);
   document.getElementById("app").innerHTML = IndexPage().render(notePad.listNotes());
 }
+
+const renderAddNote = function() {
+  document.getElementById("app").innerHTML = AddNotePage().render()
+}
