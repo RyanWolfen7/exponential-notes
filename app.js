@@ -27,3 +27,10 @@ const handleDeleteNote = function(index) {
 const renderAddNote = function() {
   document.getElementById("app").innerHTML = AddNotePage().render()
 }
+
+const addNote = function() {
+  title = document.getElementById('title').value;
+  body = document.getElementById('body').value;
+  notePad.add(new Note (title, body));
+  document.getElementById("app").innerHTML = IndexPage().render(notePad.listNotes());
+}
