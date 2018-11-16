@@ -2,7 +2,7 @@ let notePad;
 window.addEventListener("load", function() {
 
   notePad = new NotePad();
-  
+
   document.getElementById("app").innerHTML = IndexPage().render(notePad.listNotes());
 }, false)
 
@@ -17,4 +17,9 @@ const handleEditNotePage = function(index) {
 const updateNote = function(index, title, body) {
   notePad.update(index, title, body);
   document.getElementById("app").innerHTML = DetailPage().render(index);
+}
+
+const handleDeleteNote = function(index) {
+  notePad.deleteNote(index);
+  document.getElementById("app").innerHTML = IndexPage().render(notePad.listNotes());
 }
