@@ -8,7 +8,7 @@ window.addEventListener("load", function() {
 
 const handleNoteDetailPage = function(index) {
   note = notePad.find(index);
-  document.getElementById("app").innerHTML = NoteListItem().render(note);
+  document.getElementById("app").innerHTML = NoteDetail().render(note);
 }
 
 const handleEditNotePage = function(index) {
