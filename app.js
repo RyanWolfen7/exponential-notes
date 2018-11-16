@@ -11,7 +11,7 @@ const handleNoteDetailPage = function(index) {
   document.getElementById("app").innerHTML = NoteDetail().render(note);
 }
 
-const handleEditNotePage = function(index) {
+const handleNoteEditPage = function(index) {
   document.getElementById("app").innerHTML = NotesEditPageView().render(notePad.listNotes()[index], index);
 }
 
