@@ -37,7 +37,7 @@ console.log("should delete note from notes");
 notePad = new NotePad();
 notePad.notes = [1,2,3]
 notePad.deleteNote(2)
-expect(notePad.notes.length).toEqual(2)
+expect(notePad.notes.).toEqual(2)
 
 console.log('\n\n------VIEW COMPONENTS------')
 console.log("should render the NoteListItem correctly")
@@ -68,7 +68,7 @@ expect(html).toHaveContent('<h3>Note three</h3>')
 console.log('should render index page component')
 indexPageComponent = new IndexPage()
 html = indexPageComponent.render(notesData)
-expect(html).toHaveContent('<button id="add" onclick="add()">Add Note</button>')
+expect(html).toHaveContent('<button id="add" onclick="renderAddNote()">Add Note</button>')
 
 console.log("should render NoteDetail correctly")
 noteDetail = new NoteDetail()
