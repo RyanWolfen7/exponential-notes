@@ -21,10 +21,15 @@
       value.includes(assertion) ? console.log('✅') : console.log('❌')
     }
 
+    function toNotHaveContent(assertion) {
+      value.includes(assertion) ? console.log('❌') : console.log('✅')
+    }
+
     return {
       toEqual: toEqual,
       compareArray: compareArray,
-      toHaveContent: toHaveContent
+      toHaveContent: toHaveContent,
+      toNotHaveContent: toNotHaveContent
     }
   }
 
